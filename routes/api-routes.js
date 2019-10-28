@@ -3,7 +3,6 @@
 // controllers
 // middleware
 
-
 var express = require('express');
 var router = express.Router();
 
@@ -13,3 +12,5 @@ router.get('/', function(req, res){
         message: "HERE IS THE API MESSAGE"
       });
 });
+
+module.exports = router;

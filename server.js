@@ -1,4 +1,3 @@
-
 var express = require('express');
 var app = express();
 
@@ -10,12 +9,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-app.get('/api', function(req, res){
-    res.json({
-        status: "API WORKING",
-        message: "HERE IS THE API MESSAGE"
-      });
-});
+app.use('/api', apiRoutes);
 
 app.listen(port, function () {
   console.log('Example app listening on port ' + port);
