@@ -4,6 +4,7 @@
   "description": "To view, share, and create electronic business cards for students",
   "main": "server.js",
   "scripts": {
+    "dev": "nodemon --exec yarn restart",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
