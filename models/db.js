@@ -1,7 +1,7 @@
 // A contact schema
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://blake:1234@cluster0-2n09e.mongodb.net/Manager?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, (error) => {
+mongoose.connect('mongodb+srv://admin:admin@cluster-lhcly.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, (error) => {
     if (error) { 
       console.log('Error in DB connection : ' + error) 
     } else {
