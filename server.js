@@ -3,7 +3,7 @@ var app = express();
 
 const apiRoutes = require("./routes/api-routes");
 
-var port = 3000;
+var port = 8080;
 
 app.get('/', function (req, res) {
   res.send('Hello World!');

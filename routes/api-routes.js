@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const {Users} = require('../models/users')
+
 const userController = require('../controllers/userController')
 
 // body parser - used for testing post request via terminal
@@ -28,7 +30,16 @@ router.post('/', function(req, res){
   res.send(req.body)
 });
 
-router.get('/login', userController.getUser)
+router.get('/login', async function(req, res, next){
+  Users.find({}, function(err, doc){
+    if (err) { return res.json({error: err})}
+    if (!doc) {return res.json({doc: 'none'})}
+    return res.send(doc)
+  })
+})
+
+// router.get('/login', userController.getUser)
+
 
 router.get('/list', controller);
 
