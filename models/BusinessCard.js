@@ -26,6 +26,5 @@ const BusinessCard = new mongoose.Schema({
 })
 
 module.exports = {
-    BusinessCard: mongoose.model('BusinessCard', BusinessCard),
-    BusinessCard
+    BusinessCard: mongoose.model('BusinessCard', BusinessCard)
 }
