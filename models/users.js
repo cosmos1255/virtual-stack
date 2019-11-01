@@ -14,10 +14,8 @@ const UsersSchema = new mongoose.Schema({
     names: [String]
     // UserBC: BusinessCard,
     // ListBC: [BusinessCard]
-})
-
-// export const Users = mongoose.model('Users', UsersSchema);
+}, )
 
 module.exports = {
     Users: mongoose.model('Users', UsersSchema, 'Users')
-  };
+};
