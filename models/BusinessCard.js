@@ -1,8 +1,7 @@
 const mongoose = require('./db');
 
 const BusinessCard = new mongoose.Schema({
-    businessCardId: String,
-    userId: String,
+    id : String,
     name: 
     {
         type: String,
@@ -25,6 +24,4 @@ const BusinessCard = new mongoose.Schema({
     }
 })
 
-module.exports = {
-    BusinessCard: mongoose.model('BusinessCard', BusinessCard)
-}
+module.export = BusinessCard

@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const SALT = 10;
 
 const mongoose = require("./db");
-const { BusinessCard } = require('./BusinessCard')
+const BusinessCard  = require('./BusinessCard')
 
 const UsersSchema = new mongoose.Schema(
   {
@@ -15,8 +15,8 @@ const UsersSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    // businessCard: BusinessCard,
-    // ListBC: [BusinessCard]
+    businessCard: BusinessCard,
+    listBC: [BusinessCard]
   },
   {
     // gets rid of _v: 0 in the database
