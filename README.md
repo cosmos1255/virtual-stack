@@ -40,6 +40,7 @@
 * Be an expert in your area but have an understanding of the ***big picture***
 * If you are working on a task, mark it as being worked on in Trello
 
+### 4. Directory ###
 * /.vscode <------- Don't touch
 * /models <-------- Where models/schema are stored
 * /node_modules <-- Don't touch
