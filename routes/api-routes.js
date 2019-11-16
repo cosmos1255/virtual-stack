@@ -16,17 +16,6 @@ const controller = function(req, res) {
   });
 };
 
-// fake contact controller
-const addcontact = function(req, res){
-  res.json({
-    // id : String,
-    name: "JAKE",
-    address: "University BLVD",
-    phoneNumber: "23456789",
-    email: "EMail"
-  });
-};
-
 // testing middleware
 const logging = function(req, res, next) {
   console.log("logging");
@@ -43,10 +32,10 @@ router.post("/", function(req, res) {
 });
 
 // get all user info
-router.get("/user/:id", async function(req, res) {
+router.get("/user/", async function(req, res) {
   try {
-    var users = await Users.findById(req.params.id)
-    res.send(users);
+    const user = await Users.findOne({ 'username': req.header.username, 'password': req.header.password })
+    res.send(user);
   } 
   catch (err) {
     res.send({ error: err.message });
@@ -54,9 +43,9 @@ router.get("/user/:id", async function(req, res) {
 });
 
 // get list of user's business cards
-router.get("/user/:id/list", async function(req, res){
+router.get("/user/list", async function(req, res){
   try{
-    var list = await Users.findById(req.params.id)
+    var list = await Users.findOne({ 'username': req.header.username, 'password': req.header.password })
     res.send(list.listBC)
   }
   catch (err){
@@ -65,9 +54,9 @@ router.get("/user/:id/list", async function(req, res){
 })
 
 // get other people names
-router.get("/user/:id/names", async function(rq, res){
+router.get("/user/names", async function(rq, res){
   try{
-    var names = await Users.findById(req.params.id)
+    var names = await Users.findOne({ 'username': req.header.username, 'password': req.header.password })
     res.send(listBC.name)
   }
   catch (err){
@@ -76,9 +65,9 @@ router.get("/user/:id/names", async function(rq, res){
 })
 
 // get user's business card
-router.get("/user/:id/card", async function(req, res){
+router.get("/user/card", async function(req, res){
   try {
-    var bc =  await Users.findById(req.params.id)
+    var bc =  await Users.findOne({ 'username': req.header.username, 'password': req.header.password })
     res.send(bc.businessCard)
   }
   catch (err){
@@ -87,7 +76,7 @@ router.get("/user/:id/card", async function(req, res){
 })
 
 // update user's business card
-router.put('/user/:id', async function(req, res){
+router.put('/user/card', async function(req, res){
   try{
     var conditions = { _id: req.params.id }
     const doc = await Users.findOneAndUpdate(conditions, req.body)
@@ -100,7 +89,7 @@ router.put('/user/:id', async function(req, res){
 })
 
 // delete a business card
-router.delete('/user/:id', async function(req, res){
+router.delete('/user/list', async function(req, res){
   try{
     var conditions = { _id: req.params.id }
     const doc = await Users.findOneAndRemove(conditions, req.body)
@@ -113,10 +102,10 @@ router.delete('/user/:id', async function(req, res){
 })
 
 // add a business card
-router.post('/user/:id', async function(req, res){
+router.post('/user/list', async function(req, res){
   try
   {
-    const user = await Users.findById(req.params.id)
+    const user = await Users.findOne({ 'username': req.header.username, 'password': req.header.password })
 
     user.businessCard.push(req.body)
     await user.save()
