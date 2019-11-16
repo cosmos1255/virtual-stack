@@ -1,8 +1,8 @@
-async function log_in(username, password) {
+async function log_in(user, pass) {
   const response = await fetch('/api/signin', {
     method: 'POST',
     headers: {
-      Authorization: `Basic ${btoa(`${username}:${password}`)}`
+      Authorization: `Basic ${btoa(`${user}:${pass}`)}`
     }
   });
   const content = response.headers.get('Content-Type') && response.headers.get('Content-Type').includes('json') ? await response.json() : await response.text();
@@ -12,13 +12,13 @@ async function log_in(username, password) {
   return content;
 }
 
-async function sign_up(username, password, card) {
+async function sign_up(user, pass, card) {
   const response = await fetch('/api/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ username, password, card})
+    body: JSON.stringify({ user, pass, card})
   });
   const content = response.headers.get('Content-Type') && response.headers.get('Content-Type').includes('json') ? await response.json() : await response.text();
 
