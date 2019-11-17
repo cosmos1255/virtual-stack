@@ -87,19 +87,15 @@ router.get("/user/card", async function(req, res){
 router.put('/user/card', async function(req, res){
   try{
     var username = req.headers.username
-
-    // var conditions = { _id: req.params.id }
-    // const doc = await Users.findOneAndUpdate(username, req.body)
-
     const user = await Users.findOne({username})
+
     console.log(user.businessCard)
+    console.log(req.body)
 
     user.businessCard = req.body
-    
     await user.save()
-    res.json(req.body)
-    
-    res.send('ok')
+
+    res.send(user.businessCard)
   }
   catch (err){
     res.send({ error: err.message})
