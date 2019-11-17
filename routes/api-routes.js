@@ -32,10 +32,13 @@ router.post("/", function(req, res) {
 });
 
 // get all user info
-router.get("/user/", async function(req, res) {
+router.get("/user", async function(req, res) {
+  var username = req.headers.username
+
   try {
-    const user = await Users.findOne({ 'username': req.header.username, 'password': req.header.password })
-    res.send(user);
+    const user = await Users.findOne({username})
+    console.log(user)
+    res.json(user)
   } 
   catch (err) {
     res.send({ error: err.message });
@@ -45,7 +48,9 @@ router.get("/user/", async function(req, res) {
 // get list of user's business cards
 router.get("/user/list", async function(req, res){
   try{
-    var list = await Users.findOne({ 'username': req.header.username, 'password': req.header.password })
+    var username = req.headers.username
+  
+    var list = await Users.findOne({username})
     res.send(list.listBC)
   }
   catch (err){
@@ -56,7 +61,9 @@ router.get("/user/list", async function(req, res){
 // get other people names
 router.get("/user/names", async function(rq, res){
   try{
-    var names = await Users.findOne({ 'username': req.header.username, 'password': req.header.password })
+    var username = req.headers.username
+  
+    var names = await Users.findOne({username})
     res.send(listBC.name)
   }
   catch (err){
@@ -67,7 +74,8 @@ router.get("/user/names", async function(rq, res){
 // get user's business card
 router.get("/user/card", async function(req, res){
   try {
-    var bc =  await Users.findOne({ 'username': req.header.username, 'password': req.header.password })
+    var username = req.headers.username
+    var bc =  await Users.findOne({username})
     res.send(bc.businessCard)
   }
   catch (err){
@@ -78,10 +86,20 @@ router.get("/user/card", async function(req, res){
 // update user's business card
 router.put('/user/card', async function(req, res){
   try{
-    var conditions = { _id: req.params.id }
-    const doc = await Users.findOneAndUpdate(conditions, req.body)
+    var username = req.headers.username
 
-    res.status(200).json({data: doc})
+    // var conditions = { _id: req.params.id }
+    // const doc = await Users.findOneAndUpdate(username, req.body)
+
+    const user = await Users.findOne({username})
+    console.log(user.businessCard)
+
+    user.businessCard = req.body
+    
+    await user.save()
+    res.json(req.body)
+    
+    res.send('ok')
   }
   catch (err){
     res.send({ error: err.message})
@@ -91,10 +109,13 @@ router.put('/user/card', async function(req, res){
 // delete a business card
 router.delete('/user/list', async function(req, res){
   try{
-    var conditions = { _id: req.params.id }
-    const doc = await Users.findOneAndRemove(conditions, req.body)
+    var username = req.headers.username
+    const user = await Users.findOne({username})
 
-    res.status(200).json({data: doc})
+    user.listBC.pull(req.body)
+    await user.save()
+    res.json(req.body)
+
   }
   catch (err){
     res.send({ error: err.message})
@@ -105,9 +126,13 @@ router.delete('/user/list', async function(req, res){
 router.post('/user/list', async function(req, res){
   try
   {
-    const user = await Users.findOne({ 'username': req.header.username, 'password': req.header.password })
+    var username = req.headers.username
+    const user = await Users.findOne({username})
 
-    user.businessCard.push(req.body)
+    console.log(user)
+    console.log("here is the req body " + req.body)
+
+    user.listBC.push(req.body)
     await user.save()
     res.json(req.body)
   }
@@ -122,8 +147,8 @@ router.post('/user/list', async function(req, res){
 router.post("/signup", async function(req, res) {
   try {
     const user = new Users({
-      username: req.body.username,
-      password: req.body.password,
+      username: req.headers.username,
+      password: req.headers.password,
       businessCard: {
         id: new mongoose.Types.ObjectId()
       },
@@ -139,14 +164,20 @@ router.post("/signup", async function(req, res) {
 // signin
 router.post("/signin", function(req, res) {
   try {
-    Users.findOne({ 'username': req.body.username }, function(err, user) {
-      if (!user) console.log("User not found");
+    var username = req.headers.username
+    var password = req.headers.password
+    Users.findOne({ username }, function(err, user) {
+      if (!user) 
+        res.send("User has not been found");
 
-      user.comparePassword(req.body.password, function(err, isMatch) {
-        if (err) throw err;
+      user.comparePassword(password, function(err, isMatch) 
+      {
+        if (err) 
+          throw err;
 
-        if (!isMatch) console.log("Wrong password");
-
+        if (!isMatch) 
+          res.send("wrong password")
+        
         console.log("logged Successfull");
         res.send("Horray")
         
@@ -155,10 +186,7 @@ router.post("/signin", function(req, res) {
   } 
   catch (err) {
     res.send({ error: err.message });
-    console.log("Error has occured");
   }
 });
-
-// Note: function(req, res) = (req, res) =>
 
 module.exports = router;
