@@ -94,7 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myCompPhone"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <EditText
         android:id="@+id/myAddress"
@@ -107,5 +107,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myPersPhone"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.050000012" />
 </androidx.constraintlayout.widget.ConstraintLayout>
