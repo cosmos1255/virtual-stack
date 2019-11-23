@@ -8,15 +8,15 @@
 
     <ImageView
         android:id="@+id/VSlogo"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
         android:contentDescription="@string/vs_logo"
         app:layout_constraintBottom_toTopOf="@+id/myCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6"
-        app:srcCompat="@drawable/virtualstacklogo" />
+        app:srcCompat="@drawable/small_vs_logo" />
 
     <TextView
         android:id="@+id/myCard"
