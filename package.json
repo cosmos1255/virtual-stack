@@ -4,7 +4,6 @@
   "description": "To view, share, and create electronic business cards for students",
   "main": "server.js",
   "scripts": {
-    "build": "parcel views/index.html views/app.js",
     "test": "nodemon server.js",
     "dev": "parcel build views/index.html",
     "error": "echo \"Error: no test specified\" && exit 1"
