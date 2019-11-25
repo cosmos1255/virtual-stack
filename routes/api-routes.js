@@ -148,6 +148,7 @@ router.post("/signup", async function(req, res) {
       businessCard: {
         id: new mongoose.Types.ObjectId()
       },
+      dateCreated: Date.now()
     });
     await user.save();
     res.send(user);

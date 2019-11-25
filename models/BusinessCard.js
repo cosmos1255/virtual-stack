@@ -5,6 +5,8 @@ const BusinessCard = new mongoose.Schema({
     name: 
     {
         type: String,
+        first: String,
+        last: String,
         required: true
     },
     address:
@@ -21,7 +23,8 @@ const BusinessCard = new mongoose.Schema({
     {
         type: String,
         required: true
-    }
+    },
+    dateCreated: String
 })
 
 module.export = BusinessCard
