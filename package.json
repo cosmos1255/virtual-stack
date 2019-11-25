@@ -1,0 +1,26 @@
+{
+  "name": "dbjs-large-project",
+  "version": "1.0.0",
+  "description": "To view, share, and create electronic business cards for students",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js",
+    "dev": "parcel build views/index.html",
+    "error": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cosmos1255/DBJS-LargeProj.git"
+  },
+  "author": "DBJs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cosmos1255/DBJS-LargeProj/issues"
+  },
+  "homepage": "https://github.com/cosmos1255/DBJS-LargeProj#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7"
+  }
+}
