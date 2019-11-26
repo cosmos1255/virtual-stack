@@ -12,7 +12,7 @@
 /signin
 /signup
 ```
-* The picture below shows an example of what this will look like.
+* The picture below shows an example of signing in using the username and password.
 
 ![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/apisignin.png)
 
@@ -27,6 +27,8 @@ api/user/list
 api/user/names
 api/user/card
 ```
-* Here is an example picture of the process.
+* Here are example pictures of adding a virtual business card by using the api/user/list route.
 
-![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/apiauth.png)
+![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/postheader.png)
+
+![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/postbody.png)
