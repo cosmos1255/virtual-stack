@@ -3,8 +3,9 @@
 * You can use any kind of rest client of your choosing like Postman, Imsomnia, Swagger.
 
 ## 2. Start the server ##
+* Before testing out the server, run the command "**npm install**" to download the modules.
 * If you are testing the server locally, use the commands "**npm start**" or "**npm test**" to startup the server.
-* If you are using the heroku REST API server, then use the link https://virtual-stack.herokuapp.com
+* If you are using the heroku REST API server, then use the link https://virtual-stack.herokuapp.com.
 
 ## 3. How to send HTTP requests ##
 * There are two methods in sending HTTP request. The first is just sending in the user's username and password. This will work for the following routes.
