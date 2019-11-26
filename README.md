@@ -3,7 +3,7 @@
 * You can use any kind of rest client of your choosing like Postman, Imsomnia, Swagger.
 
 ## 2. Start the server ##
-* If you are testing the server locally, use the commands **npm start** or **npm test** to startup the server.
+* If you are testing the server locally, use the commands "**npm start**" or "**npm test**" to startup the server.
 * If you are using the heroku REST API server, then use the link https://virtual-stack.herokuapp.com
 
 ## 3. How to send HTTP requests ##
@@ -16,7 +16,7 @@
 
 ![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/apisignin.png)
 
-* The other method of sending an HTTP request is by sending the Base64 Auth Token. To do this, go to this website https://www.base64encode.org/ and enter in the username and password. Note that the username and **hash password** must be seperated by a colon. This picture shows an example of encoding the credentials in Base 64.
+* The other method of sending an HTTP request is by sending the Base64 Auth Token. To do this, go to this website https://www.base64encode.org/ and enter in the username and **hashed password**. Note that the username and **hash password** must be seperated by a colon. This picture shows an example of encoding the credentials in Base 64.
 
 ![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/base64.png)
 
