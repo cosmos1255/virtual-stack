@@ -26,4 +26,5 @@ api/user/names
 api/user/card
 ```
 * Here is an example picture of the process.
+
 ![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/apiauth.png)
