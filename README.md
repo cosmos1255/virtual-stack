@@ -10,8 +10,8 @@
 ## 3. How to send HTTP requests ##
 * There are two methods in sending HTTP request. The first is just sending in the user's username and password. This will work for the following routes.
 ``` 
-/signin
-/signup
+api/signin
+api/signup
 ```
 * The picture below shows an example of signing in using the username and password.
 
