@@ -29,6 +29,3 @@ api/user/card
 ```
 * Here are example pictures of adding a virtual business card by using the api/user/list route.
 
-![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/postheader.png)
-
-![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/postbody.png)
