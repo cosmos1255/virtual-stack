@@ -7,7 +7,7 @@
 * If you are using the heroku REST API server, then use the link https://virtual-stack.herokuapp.com
 
 ## 3. How to send HTTP requests ##
-* There are two methods in sending HTTP request. The first is just sending in the user's username and **hashed password**. This will work for the following routes.
+* There are two methods in sending HTTP request. The first is just sending in the user's username and password. This will work for the following routes.
 ``` 
 /signin
 /signup
