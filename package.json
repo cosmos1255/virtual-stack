@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cosmos1255/DBJS-LargeProj#readme",
   "dependencies": {
+    "atob": "^2.1.2",
     "bcrypt": "^3.0.6",
     "express": "^4.17.1",
     "mongoose": "^5.7.7"
