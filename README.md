@@ -9,8 +9,8 @@
 ## 3. How to send HTTP requests ##
 * There are two methods in sending HTTP request. The first is just sending in the user's username and **hashed password**. This will work for the following routes.
 ``` 
-api/signin
-api/signup
+/signin
+/signup
 ```
 * The picture below shows an example of what this will look like.
 
