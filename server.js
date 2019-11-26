@@ -18,3 +18,5 @@ app.use('/api', apiRoutes);
 app.listen(process.env.PORT || port, function () {
   console.log('Example app listening on port ' + port);
 });
+
+// https://stackoverflow.com/questions/15693192/heroku-node-js-error-web-process-failed-to-bind-to-port-within-60-seconds-of
