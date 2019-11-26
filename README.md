@@ -13,9 +13,11 @@ api/signin
 api/signup
 ```
 * The picture below shows an example of what this will look like.
+
 ![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/apisignin.png)
 
 * The other method of sending an HTTP request is by sending the Base64 Auth Token. To do this, go to this website https://www.base64encode.org/ and enter in the username and password. Note that the username and **hash password** must be seperated by a colon. This picture shows an example of encoding the credentials in Base 64.
+
 ![](https://raw.githubusercontent.com/cosmos1255/DBJS-LargeProj/API/readme/base64.png)
 
 * Once you got the credentials encoded, go to your REST client of your choice and type in "Authorization" in the header key and put the word "Basic" followed by the Base64 token. Note that this will be need for the following routes.
