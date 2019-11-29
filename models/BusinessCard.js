@@ -24,6 +24,7 @@ const BusinessCard = new mongoose.Schema({
         type: String,
         required: true
     },
+    occupation: String,
     dateCreated: String
 })
 

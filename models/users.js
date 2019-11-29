@@ -54,6 +54,10 @@ UsersSchema.methods.comparePassword = function(candidatePassword,checkpassword){
   });
 };
 
+UsersSchema.methods.compareHash = function(candidatePassword){
+  return this.password.localeCompare(candidatePassword)
+}
+
 module.exports = {
   // first paramater is then name, second is the schema, and third is the collection
   Users: mongoose.model("Users", UsersSchema, "Users")
