@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink
+} from "react-router-dom";
 import ViewCards from "./ViewCards.js";
 import EditCard from "./EditCard.js";
 import LoginInfo from "./EditLoginInfo.js";
@@ -12,32 +17,48 @@ class MenuContent extends Component {
     super(props);
 
     this.items = [];
-    for (let i = 1; i <= 5; i++) {
-      this.items.push(i);
-    }
   }
 
   render() {
     return (
       <div className="menu">
-        <div className="menu-items">
-          <Router>
+        <div>
+          <Router className="menu-items">
             <div>
               <nav>
-                <Link to="/view_contacts">ViewCards</Link>
-                <br />
-                <Link to="/edit_personal_card">EditCard</Link>
-                <br />
-                <Link to="/edit_login_info">LoginInfo</Link>
+                <NavLink
+                  to="/view_contacts"
+                  className="btn btn-dark btn-block"
+                  onClick={this.props.closeCallback}
+                  target="_blank"
+                >
+                  View All Contacts
+                </NavLink>
+                <NavLink
+                  to="/edit_personal_card"
+                  className="btn btn-dark btn-block"
+                  onClick={this.props.closeCallback}
+                  target="_blank"
+                >
+                  Edit Your Card Info
+                </NavLink>
+                <NavLink
+                  to="/edit_login_info"
+                  className="btn btn-dark btn-block"
+                  onClick={this.props.closeCallback}
+                  target="_blank"
+                >
+                  Profile Info
+                </NavLink>
               </nav>
               <Switch>
-                <Route path="/view_contacts">
+                <Route path="/view_contacts" exact>
                   <ViewCards />
                 </Route>
-                <Route path="/edit_personal_card">
+                <Route path="/edit_personal_card" exact>
                   <EditCard />
                 </Route>
-                <Route path="/edit_login_info">
+                <Route path="/edit_login_info" exact>
                   <LoginInfo />
                 </Route>
               </Switch>

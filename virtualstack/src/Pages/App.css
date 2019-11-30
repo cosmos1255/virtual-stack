@@ -16,3 +16,15 @@
   font-size: calc(10px + 2vmin);
   color: #000000;
 }
+
+.large-logo {
+  width: 300px;
+}
+
+.small-logo {
+  width: 350px;
+}
+
+.landing-buttons {
+  width: 200px;
+}
