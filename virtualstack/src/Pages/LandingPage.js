@@ -10,7 +10,7 @@ import "./App.css";
 import Login from "./Login.js";
 import SignUp from "./SignUp.js";
 import LargeLogo from "./virtualstacklogo.png";
-import Home from "./Home.js";
+import PageNav from "./PageNav.js";
 import Button from "react-bootstrap/button";
 
 class LandingPage extends Component {
@@ -31,8 +31,8 @@ class LandingPage extends Component {
               Sign Up
             </NavLink>
             <br />
-            <NavLink to="/home" className="btn btn-success btn-block" exact>
-              Home
+            <NavLink to="/pagenav" className="btn btn-success btn-block" exact>
+              PageNav
             </NavLink>
           </div>
           <Switch>
@@ -42,8 +42,8 @@ class LandingPage extends Component {
             <Route path="/signup" exact>
               <SignUp />
             </Route>
-            <Route path="/home" exact>
-              <Home />
+            <Route path="/pagenav" exact>
+              <PageNav />
             </Route>
           </Switch>
         </div>

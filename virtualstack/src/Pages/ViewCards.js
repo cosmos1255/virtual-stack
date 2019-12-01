@@ -1,10 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 
-export default function Login() {
-  return (
-    <div class="login-header">
-      <h1>View Contacts Page</h1>
-    </div>
-  );
+class ViewCards extends Component {
+  render() {
+    return (
+      <div class="login-header">
+        <h1>Welcome to Contacts</h1>
+      </div>
+    );
+  }
 }
+
+export default ViewCards;
