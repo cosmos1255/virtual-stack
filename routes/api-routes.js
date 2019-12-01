@@ -20,6 +20,8 @@ const controller = function(req, res) {
 // testing get function
 router.get("/", controller);
 
+router.get("/test", controller)
+
 // testing post function
 router.post("/", function(req, res) {
   console.log(req.body);
