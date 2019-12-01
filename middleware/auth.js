@@ -1,6 +1,6 @@
 const {Users} = require('../models/users')
 const atob = require('atob')
-
+const StatusError = require("../utilities/status-error")
 const auth = async function(req, res, next){
   try{
   	const [type, encodedCredentials] = req.header("Authorization").split(' ')
@@ -12,7 +12,11 @@ const auth = async function(req, res, next){
     })
 
     if(!user){
-      res.send("Cannot find user")
+      throw new StatusError({
+        message: 'Username / Password is invalid.',
+        status: 'authorization_failed',
+        statusCode: 401
+      });
     }
     req.auth = { username }
     next();

@@ -5,8 +5,6 @@ const atob = require('atob')
 const { Users } = require("../models/users");
 const mongoose = require('mongoose')
 
-// const auth = require('../middleware/auth')
-
 // body parser - used for testing post request via terminal
 const bodyParser = require("body-parser");
 router.use(bodyParser.json());
@@ -19,14 +17,8 @@ const controller = function(req, res) {
   });
 };
 
-// testing middleware
-const logging = function(req, res, next) {
-  console.log("logging");
-  next();
-};
-
 // testing get function
-router.get("/", logging, controller);
+router.get("/", controller);
 
 // testing post function
 router.post("/", function(req, res) {
@@ -46,9 +38,25 @@ const auth = async function(req, res, next){
     })
 
     if(!user){
-      res.send("Cannot find user")
+      res.status(401).send("Username / Password is invaild")
     }
     req.auth = { username }
+    req.pass = { password }
+    next();
+  }
+  catch(err){
+    next(err)
+  }
+}
+
+// auth for signup
+const authsignup = async function(req, res, next){
+  try{
+    const [type, encodedCredentials] = req.header("Authorization").split(' ')
+    const [username, password] = atob(encodedCredentials).split(':')
+
+    req.auth = { username }
+    req.pass = { password }
     next();
   }
   catch(err){
@@ -58,16 +66,13 @@ const auth = async function(req, res, next){
 
 // get all user info
 router.get("/user",auth, async function(req, res) {
-  var username = req.auth.username
-  console.log(username)
-
   try {
+    var username = req.auth.username
     const user = await Users.findOne({username})
-    console.log(user)
     res.json(user)
   } 
-  catch (err) {
-    res.send({ error: err.message });
+  catch (err){
+    res.send({error: err.message})
   }
 });
 
@@ -75,25 +80,29 @@ router.get("/user",auth, async function(req, res) {
 router.get("/user/list",auth, async function(req, res){
   try{
     var username = req.auth.username
-  
     var list = await Users.findOne({username})
-    res.send(list.listBC)
+    res.json(list.listBC)
   }
   catch (err){
-    res.send({ error: err.message})
+    res.send({error: err.message})
   }
 })
 
 // get other people names
-router.get("/user/names", auth, async function(rq, res){
+router.get("/user/names", auth, async function(req, res){
   try{
     var username = req.auth.username
   
-    var names = await Users.findOne({username})
-    res.send(listBC.name)
+    var user = await Users.findOne({username})
+    var names = []
+    for(let userobj of user.listBC)
+    {
+      names.push(userobj.name) 
+    }
+    res.send(names)
   }
   catch (err){
-    res.send({ error: err.message})
+    res.send({error: err.message})
   }
 })
 
@@ -101,11 +110,25 @@ router.get("/user/names", auth, async function(rq, res){
 router.get("/user/card", auth,  async function(req, res){
   try {
     var username = req.auth.username
-    var bc =  await Users.findOne({username})
-    res.send(bc.businessCard)
+    var user =  await Users.findOne({username})
+    res.send(user.businessCard)
   }
   catch (err){
-    res.send({ error: err.message})
+    res.send({error: err.message})
+  }
+})
+
+// get other user's business card
+router.get("/user/person", auth , async function(req, res){
+  try{
+    var username = req.auth.username
+    var body = req.body
+    var user =  await Users.findOne({username})
+    var person = user.listBC.find(element => element,body)
+    res.send(person)
+  }
+  catch (err){
+    res.send({error: err.message})
   }
 })
 
@@ -113,15 +136,45 @@ router.get("/user/card", auth,  async function(req, res){
 router.put('/user/card', auth, async function(req, res){
   try{
     var username = req.auth.username
-    const user = await Users.findOne({username})
+    
+    var user = await Users.findOne({username}, function(err, card){
+      if(req.body.name.first)
+        card.update({"businessCard.name.first": req.body.name.first}).exec()
 
-    console.log(user.businessCard)
-    console.log(req.body)
+      if(req.body.name.last)
+        card.update({"businessCard.name.last": req.body.name.last}).exec()
 
-    user.businessCard = req.body
-    await user.save()
+      if(req.body.address)
+        card.update({"businessCard.address": req.body.address}).exec()
 
-    res.send(user.businessCard)
+      if(req.body.phoneNumber)
+        card.update({"businessCard.address": req.body.phoneNumber}).exec()
+      
+      if(req.body.email)
+        card.update({"businessCard.email": req.body.email}).exec()
+
+      if(req.body.occupation)
+        card.update({"businessCard.occupation": req.body.occupation}).exec()
+    })
+    res.send("User's card was updated")
+    // const doc = {
+    //   name: {
+    //     first: req.body.name.first,
+    //     last: req.body.name.last
+    //   },
+    //   address: req.body.address,
+    //   phoneNumber: req.body.phoneNumber,
+    //   email: req.body.email,
+    //   occupation: req.body.occupation
+    // }
+    // user.updateOne({businessCard: ops}, doc, function(err, raw) {
+    //   if (err) {
+    //     res.send(err);
+    //   }
+    //   res.send(raw);
+    // })
+    // await user.save()
+    // res.send("testing")
   }
   catch (err){
     res.send({ error: err.message})
@@ -133,11 +186,11 @@ router.delete('/user/list',auth,  async function(req, res){
   try{
     var username = req.auth.username
     const user = await Users.findOne({username})
-
-    user.listBC.pull(req.body)
+    const body = req.body
+    var person = user.listBC.find(element => element,body)
+    user.listBC.pull(person)
     await user.save()
-    res.json(req.body)
-
+    res.send("User successfully deleted")
   }
   catch (err){
     res.send({ error: err.message})
@@ -151,30 +204,40 @@ router.post('/user/list', auth,  async function(req, res){
     var username = req.auth.username
     const user = await Users.findOne({username})
 
-    console.log(user)
-    console.log("here is the req body " + req.body)
+    const person = {
+      id: new mongoose.Types.ObjectId(),
+      name: {
+        first: req.body.name.first,
+        last: req.body.name.last
+      },
+      address: req.body.address,
+      phoneNumber: req.body.phoneNumber,
+      email: req.body.email,
+      occupation: req.body.occupation,
+      dateCreated: Date(Date.toLocaleString())
+    }
 
-    user.listBC.push(req.body)
+    user.listBC.push(person)
     await user.save()
-    res.json(req.body)
+    res.json(person)
   }
-  catch(err)
-  {
-    res.send({error: err})
+  catch(err){
+    res.send({error: err.message})
   }
 })
 
 // signup
-router.post("/signup", async function(req, res) {
+router.post("/signup", authsignup, async function(req, res) {
   try {
     const user = new Users({
-      username: req.headers.username,
-      password: req.headers.password,
+      username: req.auth.username,
+      password: req.pass.password,
       businessCard: {
         id: new mongoose.Types.ObjectId()
       },
-      dateCreated: Date.now()
     });
+ 
+    user.businessCard = req.body
     await user.save();
     res.send(user);
   } 
@@ -184,27 +247,9 @@ router.post("/signup", async function(req, res) {
 });
 
 // signin
-router.post("/signin", function(req, res) {
+router.post("/signin", auth, function(req, res) {
   try {
-    var username = req.headers.username
-    var password = req.headers.password
-    Users.findOne({ username }, function(err, user) {
-      if (!user) 
-        res.send("User has not been found");
-
-      user.comparePassword(password, function(err, isMatch) 
-      {
-        if (err) 
-          throw err;
-
-        if (!isMatch) 
-          res.send("wrong password")
-        
-        console.log("logged Successfull");
-        res.send("Horray")
-        
-      });
-    });
+    res.send("Signin has been successful")
   } 
   catch (err) {
     res.send({ error: err.message });
