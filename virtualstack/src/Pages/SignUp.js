@@ -77,7 +77,7 @@ class SignUp extends Component {
             <Form.Control placeholder="1234 Main St" required />
           </Form.Group>
 
-          <Button variant="danger" type="submit">
+          <Button variant="dark" type="submit">
             Sign Up
           </Button>
         </Form>
