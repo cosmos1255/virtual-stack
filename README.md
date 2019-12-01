@@ -40,6 +40,9 @@
 * Be an expert in your area but have an understanding of the ***big picture***
 * If you are working on a task, mark it as being worked on in Trello
 
+### 4. Final Presentation/Demo ###
+* Presentation Slides: https://docs.google.com/presentation/d/1a_f7F4MFjSL4W9JT-Yre3z4ooElsrRzWBOkV8OtPxcA/edit?usp=sharing
+
 
 
 
