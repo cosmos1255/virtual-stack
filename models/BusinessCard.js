@@ -5,8 +5,6 @@ const BusinessCard = new mongoose.Schema({
     name: 
     {
         type: String,
-        first: String,
-        last: String,
         required: true
     },
     address:

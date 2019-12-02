@@ -140,8 +140,8 @@ router.put('/user/card', auth, async function(req, res){
     var username = req.auth.username
     
     var user = await Users.findOne({username}, function(err, card){
-      if(req.body.name.first)
-        card.update({"businessCard.name.first": req.body.name.first}).exec()
+      if(req.body.name)
+        card.update({"businessCard.name": req.body.name}).exec()
 
       if(req.body.name.last)
         card.update({"businessCard.name.last": req.body.name.last}).exec()
@@ -208,10 +208,7 @@ router.post('/user/list', auth,  async function(req, res){
 
     const person = {
       id: new mongoose.Types.ObjectId(),
-      name: {
-        first: req.body.name.first,
-        last: req.body.name.last
-      },
+      name: req.body.name,
       address: req.body.address,
       phoneNumber: req.body.phoneNumber,
       email: req.body.email,
