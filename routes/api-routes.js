@@ -143,14 +143,11 @@ router.put('/user/card', auth, async function(req, res){
       if(req.body.name)
         card.update({"businessCard.name": req.body.name}).exec()
 
-      if(req.body.name.last)
-        card.update({"businessCard.name.last": req.body.name.last}).exec()
-
       if(req.body.address)
         card.update({"businessCard.address": req.body.address}).exec()
 
       if(req.body.phoneNumber)
-        card.update({"businessCard.address": req.body.phoneNumber}).exec()
+        card.update({"businessCard.phoneNumber": req.body.phoneNumber}).exec()
       
       if(req.body.email)
         card.update({"businessCard.email": req.body.email}).exec()
