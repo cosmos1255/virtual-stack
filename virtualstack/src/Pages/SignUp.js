@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import InputMask from "react-input-mask";
-// import {
-//     BrowserRouter as Link
-// } from "react-router-dom";
 import "./App.css";
 import Form from "react-bootstrap/Form";
 import { Col } from "react-bootstrap";
