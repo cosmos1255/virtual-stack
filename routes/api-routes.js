@@ -248,10 +248,10 @@ router.post("/signup", authsignup, async function(req, res) {
 // signin
 router.post("/signin", auth, function(req, res) {
   try {
-    res.send("Signin has been successful")
+    res.status(200).send("Signin has been successful")
   } 
   catch (err) {
-    res.send({ error: err.message });
+    res.status(401).send({ error: err.message });
   }
 });
 
