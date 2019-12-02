@@ -5,7 +5,7 @@ import PageNav from "./PageNav.js";
 class EditCard extends Component {
   render() {
     return (
-      <div>
+      <div class="normal-page-format">
         <PageNav />
         <h1>Welcome to Editing Card</h1>
       </div>

@@ -5,7 +5,7 @@ import PageNav from "./PageNav.js";
 class EditLoginInfo extends Component {
   render() {
     return (
-      <div>
+      <div class="normal-page-format">
         <PageNav />
         <h1>Welcome to EditingLoginInfo</h1>
       </div>

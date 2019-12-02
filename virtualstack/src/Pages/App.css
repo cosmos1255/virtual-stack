@@ -17,6 +17,10 @@
   color: #000000;
 }
 
+.normal-page-format {
+  min-height: 100vh;
+}
+
 .large-logo {
   width: 300px;
 }

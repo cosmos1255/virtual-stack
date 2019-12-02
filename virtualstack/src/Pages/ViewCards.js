@@ -11,7 +11,7 @@ import PageNav from "./PageNav.js";
 class ViewCards extends Component {
   render() {
     return (
-      <div>
+      <div class="normal-page-format">
         <PageNav />
         <div>
           <h1>Your Contacts</h1>
