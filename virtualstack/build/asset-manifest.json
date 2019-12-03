@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/cosmos1255/DBJS-LargeProj/static/css/main.13740ece.chunk.css",
+    "main.js": "/cosmos1255/DBJS-LargeProj/static/js/main.92a0d509.chunk.js",
+    "main.js.map": "/cosmos1255/DBJS-LargeProj/static/js/main.92a0d509.chunk.js.map",
+    "runtime-main.js": "/cosmos1255/DBJS-LargeProj/static/js/runtime-main.f9202497.js",
+    "runtime-main.js.map": "/cosmos1255/DBJS-LargeProj/static/js/runtime-main.f9202497.js.map",
+    "static/js/2.28b3c289.chunk.js": "/cosmos1255/DBJS-LargeProj/static/js/2.28b3c289.chunk.js",
+    "static/js/2.28b3c289.chunk.js.map": "/cosmos1255/DBJS-LargeProj/static/js/2.28b3c289.chunk.js.map",
+    "index.html": "/cosmos1255/DBJS-LargeProj/index.html",
+    "precache-manifest.13eac23183b698235f8cd54ef98e19dc.js": "/cosmos1255/DBJS-LargeProj/precache-manifest.13eac23183b698235f8cd54ef98e19dc.js",
+    "service-worker.js": "/cosmos1255/DBJS-LargeProj/service-worker.js",
+    "static/css/main.13740ece.chunk.css.map": "/cosmos1255/DBJS-LargeProj/static/css/main.13740ece.chunk.css.map",
+    "static/media/virtualstacklogo.png": "/cosmos1255/DBJS-LargeProj/static/media/virtualstacklogo.5689281b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f9202497.js",
+    "static/js/2.28b3c289.chunk.js",
+    "static/css/main.13740ece.chunk.css",
+    "static/js/main.92a0d509.chunk.js"
+  ]
+}
