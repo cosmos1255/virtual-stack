@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Virtual Stack</string>
+    <string name="cancel">Return</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="vs_logo">VS logo</string>
+    <string name="password">Password</string>
+    <string name="enter_your_username_here">Enter your username here.</string>
+    <string name="username">Username</string>
+    <string name="enter_your_password_here">Enter your password here.</string>
+    <string name="new_username">New Username</string>
+    <string name="create">Create</string>
+    <string name="my_virtual_card">My Virtual Card</string>
+    <string name="present_my_card">Present My Card</string>
+    <string name="scan_foreign_card">Scan Foreign Card</string>
+    <string name="my_recent_contacts">My Recent Contacts</string>
+    <string name="see_all_contacts">See All Contacts</string>
+    <string name="filler_myname">Full Name</string>
+    <string name="filler_myCompany">Company/School</string>
+    <string name="filler_myEmail">email@email.com</string>
+    <string name="filler_myNumber">(999)999-9999</string>
+    <string name="filler_myAddress">1234 Address Av.</string>
+    <string name="filler_selfie">Selfie Filler</string>
+    <string name="under_construction">We\'re sorry, but this portion of the app is currently under construction. Please try again later!</string>
+    <dimen name="activity_horizontal_margin" />
+</resources>
