@@ -35,13 +35,19 @@ const auth = async function(req, res, next){
     const [username, password] = atob(encodedCredentials).split(':')
 
     const user = await Users.findOne({
-      username,
-      password
+      username
     })
 
     if(!user){
       res.status(401).send("Username / Password is invaild")
     }
+
+    user.comparePassword(password, function(err, isMatch){
+      if(err)
+        console.log(err)
+      if(!isMatch)
+        res.send("Username / Password is invaild")
+    })
     req.auth = { username }
     req.pass = { password }
     next();

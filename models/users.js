@@ -25,34 +25,34 @@ const UsersSchema = new mongoose.Schema(
 );
 
 // stores password into a bcrypt hash when a user is created
-// UsersSchema.pre("save", function(next) {
-//   var user = this;
+UsersSchema.pre("save", function(next) {
+  var user = this;
 
-//   if (user.isModified("password")) {
-//     bcrypt.genSalt(SALT, function(err, salt) {
-//       if (err) return next(err);
+  if (user.isModified("password")) {
+    bcrypt.genSalt(SALT, function(err, salt) {
+      if (err) return next(err);
 
-//       bcrypt.hash(user.password, salt, function(err, hash) {
-//         if (err) return next(err);
+      bcrypt.hash(user.password, salt, function(err, hash) {
+        if (err) return next(err);
 
-//         user.password = hash;
-//         next();
-//       });
-//     });
-//   }
-//   // goes to the next middleware
-//   else {
-//     next();
-//   }
-// });
+        user.password = hash;
+        next();
+      });
+    });
+  }
+  // goes to the next middleware
+  else {
+    next();
+  }
+});
 
 // compares password to hash password from database 
-// UsersSchema.methods.comparePassword = function(candidatePassword,checkpassword){
-//   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-//     if (err) return checkpassword(err);
-//     checkpassword(null, isMatch);
-//   });
-// };
+UsersSchema.methods.comparePassword = function(candidatePassword,checkpassword){
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    if (err) return checkpassword(err);
+    checkpassword(null, isMatch);
+  });
+};
 
 module.exports = {
   // first paramater is then name, second is the schema, and third is the collection
