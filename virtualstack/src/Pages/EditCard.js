@@ -3,7 +3,7 @@ import "./App.css";
 import Form from "react-bootstrap/Form";
 import { Col } from "react-bootstrap";
 import MaskedFormControl from "react-bootstrap-maskedinput";
-import Button from "react-bootstrap/button";
+import Button from "react-bootstrap/Button";
 import PageNav from "./PageNav.js";
 
 class EditCard extends Component {
