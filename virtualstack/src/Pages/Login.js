@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/button";
+import Button from "react-bootstrap/Button";
 import SmallLogo from "./smallVSlogo.png";
 // import Home from "./Home.js";
 // import FormControl from "react-bootstrap/FormControl";
